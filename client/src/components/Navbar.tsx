@@ -51,7 +51,7 @@ const Navbar = () => {
             className={`text-gray-50 text-3xl font-bold pt-2.5 ${
               !isSidebarOpen ? 'ml-5' : 'ml-0'
             }`}>
-            Expatswap {value}
+            Expatswap
           </h1>
         </Link>
         <div

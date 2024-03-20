@@ -34,7 +34,7 @@ export const getAllFilteredUsers = async (req, res) => {
   try {
     const total = await User.countDocuments(filter);
 
-    const users = await User.find(filter).limit(LIMIT).skip(startIndex);
+    const users = await User.find(filter).limit(LIMIT).skip(startIndex).sort({ _id: -1 });
 
     res.status(StatusCodes.OK).json({
       data: users,
