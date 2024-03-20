@@ -6,5 +6,18 @@ import Footer from './Footer';
 import HeroHeader from './HeroHeader';
 import Form from './Form';
 import HomeView from './HomeView';
+import DateFilters from './DateFilters';
+import Pagination from './Pagination';
 
-export { Layout, NavProfile, Loader, Navbar, Footer, HeroHeader, Form, HomeView };
+export {
+  Layout,
+  NavProfile,
+  Loader,
+  Navbar,
+  Footer,
+  HeroHeader,
+  Form,
+  HomeView,
+  DateFilters,
+  Pagination,
+};

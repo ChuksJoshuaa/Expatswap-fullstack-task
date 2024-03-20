@@ -15,9 +15,6 @@ const Homeview = () => {
   } = useAppSelector((state) => state.users);
   const { loading } = useFetch();
 
-  console.log(loading);
-  console.log(searchedData);
-
   if (loading || isLoading) return <Loader />;
 
   return (
@@ -71,8 +68,8 @@ const Homeview = () => {
               </thead>
 
               {searchedData.map((item: UserProps, index: number) => (
-                <tbody className="bg-white">
-                  <tr key={index} className="border-1 border-grey-light font-normal">
+                <tbody className="bg-white" key={index}>
+                  <tr className="border-1 border-grey-light font-normal">
                     <td className="px-6 py-3 whitespace-no-wrap whitespace-nowrap border-1 border-grey-light">
                       {index + 1}
                     </td>

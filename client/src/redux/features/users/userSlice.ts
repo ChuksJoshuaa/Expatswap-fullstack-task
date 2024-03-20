@@ -6,6 +6,8 @@ const initialState: IIProps = {
   searchTerm: '',
   isSidebarOpen: false,
   searchedData: [],
+  dateFrom: '',
+  dateTo: '',
 };
 
 export const userSlice = createSlice({
@@ -28,9 +30,16 @@ export const userSlice = createSlice({
     setSearchedData: (state, action) => {
       state.searchedData = action.payload;
     },
+    setDateFrom: (state, action) => {
+      state.dateFrom = action.payload;
+    },
+    setDateTo: (state, action) => {
+      state.dateTo = action.payload;
+    },
   },
 });
 
-export const { setLoader, openSidebar, setSearchTerm, setSearchedData } = userSlice.actions;
+export const { setLoader, openSidebar, setSearchTerm, setSearchedData, setDateFrom, setDateTo } =
+  userSlice.actions;
 
 export default userSlice.reducer;

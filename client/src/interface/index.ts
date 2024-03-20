@@ -27,4 +27,6 @@ export interface IIProps {
   searchTerm: string;
   isSidebarOpen: boolean;
   searchedData: UserProps[];
+  dateFrom: string;
+  dateTo: string;
 }
