@@ -11,3 +11,12 @@ export type ChildrenProps = {
 export interface HeaderProps {
   type: string;
 }
+
+export interface UserProps {
+  firstName: string;
+  lastName: string;
+  phoneNumber: string;
+  email: string;
+  password: string;
+  dateOfBirth: string;
+}

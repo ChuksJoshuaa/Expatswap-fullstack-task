@@ -20,7 +20,7 @@ const Header = ({ type }: HeaderProps) => {
         <img src={dashboardSvg} alt="dashboard" className="w-[20px] h-[20px]" />
         <img src={arrowRightSvg} alt="arrow-right" className="w-[20px] h-[20px] mx-2" />
         <h3 className="font-bold text-[14px] md:text-[17px] leading-[20px] text-[#222]">
-          All Users Record
+          {type === 'user-view' ? 'All Users Record' : 'Create User'}
         </h3>
       </div>
       {type === 'user-view' ? (

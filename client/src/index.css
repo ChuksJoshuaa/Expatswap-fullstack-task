@@ -75,3 +75,11 @@ a {
     grid-template-columns: 1fr;
   }
 }
+
+.input {
+  border: 1px solid #ccc;
+}
+
+.input-invalid {
+  border: 1px solid #e74c3c;
+}
