@@ -11,6 +11,7 @@ const initialState: IIProps = {
   page: 1,
   pageSize: 5,
   numberOfPages: 0,
+  userId: '',
 };
 
 export const userSlice = createSlice({
@@ -48,6 +49,9 @@ export const userSlice = createSlice({
     setPageSize: (state, action) => {
       state.pageSize = action.payload;
     },
+    setUserId: (state, action) => {
+      state.userId = action.payload;
+    },
   },
 });
 
@@ -61,6 +65,7 @@ export const {
   setPage,
   setNumberOfPages,
   setPageSize,
+  setUserId
 } = userSlice.actions;
 
 export default userSlice.reducer;

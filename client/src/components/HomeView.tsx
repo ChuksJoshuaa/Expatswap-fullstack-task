@@ -1,4 +1,5 @@
 import moment from 'moment';
+import { MdDelete } from 'react-icons/md';
 import { Loader } from '.';
 import useFetch from '../api';
 import NotFoundImg from '../assets/not-fond.jpg';
@@ -7,12 +8,12 @@ import { useAppSelector } from '../redux/hooks';
 import { headers } from '../utils/header';
 
 const Homeview = () => {
-  const {
-    searchedData,
-    isSidebarOpen,
-    searchTerm,
-  } = useAppSelector((state) => state.users);
-  const { loading } = useFetch();
+  const { searchedData, isSidebarOpen, searchTerm } = useAppSelector((state) => state.users);
+  const { loading, deletion } = useFetch();
+
+  const deleteBtn = (val: string) => {
+    deletion(val);
+  };
 
   if (loading) return <Loader />;
 
@@ -86,6 +87,13 @@ const Homeview = () => {
                     </td>
                     <td className="px-6 py-3 whitespace-no-wrap whitespace-nowrap border-1 border-grey-light">
                       {moment(item?.dateOfBirth).format('LL')}
+                    </td>
+                    <td className="px-6 py-3 whitespace-no-wrap whitespace-nowrap border-1 border-grey-light">
+                      <button
+                        className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-2 rounded"
+                        onClick={() => deleteBtn(item._id as string)}>
+                        <MdDelete />
+                      </button>
                     </td>
                   </tr>
                 </tbody>

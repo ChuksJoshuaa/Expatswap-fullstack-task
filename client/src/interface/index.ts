@@ -7,6 +7,7 @@ export interface HeaderProps {
 }
 
 export interface UserProps {
+  _id?: string;
   firstName: string;
   lastName: string;
   phoneNumber: string;
@@ -32,4 +33,5 @@ export interface IIProps {
   page: number;
   pageSize: number;
   numberOfPages: number;
+  userId: string;
 }

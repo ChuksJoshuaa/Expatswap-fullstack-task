@@ -1,14 +1,20 @@
 import { useEffect, useState } from 'react';
 import { AllUsersProps } from '../interface';
-import { serverUrl } from '../utils/route';
+import {
+  setNumberOfPages,
+  setPage,
+  setSearchedData,
+  setUserId,
+} from '../redux/features/users/userSlice';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import { setSearchedData, setPage, setNumberOfPages } from '../redux/features/users/userSlice';
+import { serverUrl } from '../utils/route';
+import { SuccessNotifier } from '../utils/Notification';
 
 const useFetch = () => {
   const dispatch = useAppDispatch();
   const [usersData, setUsersData] = useState({} as AllUsersProps);
   const [loading, setLoading] = useState(false);
-  const { dateFrom, dateTo, page, pageSize } = useAppSelector((state) => state.users);
+  const { dateFrom, dateTo, page, pageSize, userId } = useAppSelector((state) => state.users);
 
   const getFetchData = async (): Promise<void> => {
     setLoading(true);
@@ -29,13 +35,26 @@ const useFetch = () => {
     }
   };
 
+  const deletion = async (val: string) => {
+    try {
+      await fetch(`${serverUrl}/api/v1/users/delete/${val}`, {
+        method: 'DELETE',
+      });
+      SuccessNotifier('User deleted successfully');
+      dispatch(setUserId(val));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getFetchData();
-  }, [dateFrom, dateTo, page, pageSize]);
+  }, [dateFrom, dateTo, page, pageSize, userId]);
 
   return {
     usersData,
     loading,
+    deletion,
   };
 };
 
