@@ -5,6 +5,7 @@ const initialState: IIProps = {
   loading: true,
   searchTerm: '',
   isSidebarOpen: false,
+  searchedData: [],
 };
 
 export const userSlice = createSlice({
@@ -23,9 +24,13 @@ export const userSlice = createSlice({
     setSearchTerm: (state, action) => {
       state.searchTerm = action.payload;
     },
+
+    setSearchedData: (state, action) => {
+      state.searchedData = action.payload;
+    },
   },
 });
 
-export const { setLoader, openSidebar, setSearchTerm } = userSlice.actions;
+export const { setLoader, openSidebar, setSearchTerm, setSearchedData } = userSlice.actions;
 
 export default userSlice.reducer;

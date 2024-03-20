@@ -1,9 +1,3 @@
-export interface IIProps {
-  loading: boolean;
-  searchTerm: string;
-  isSidebarOpen: boolean;
-}
-
 export type ChildrenProps = {
   children: React.ReactNode;
 };
@@ -19,4 +13,18 @@ export interface UserProps {
   email: string;
   password: string;
   dateOfBirth: string;
+}
+
+export interface AllUsersProps {
+  data: UserProps[];
+  currentPage: number;
+  numberOfPages: number;
+  count: number;
+}
+
+export interface IIProps {
+  loading: boolean;
+  searchTerm: string;
+  isSidebarOpen: boolean;
+  searchedData: UserProps[];
 }

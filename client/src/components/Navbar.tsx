@@ -3,16 +3,38 @@ import toggleSvg from '../assets/toggle.svg';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { NavProfile } from '.';
+import useFetch from '../api';
 
-import { openSidebar, setLoader } from '../redux/features/users/userSlice';
+import {
+  openSidebar,
+  setLoader,
+  setSearchTerm,
+  setSearchedData,
+} from '../redux/features/users/userSlice';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
+import { UserProps } from '../interface';
 
 const Navbar = () => {
   const dispatch = useAppDispatch();
+  const { usersData } = useFetch();
   const { isSidebarOpen } = useAppSelector((state) => state.users);
   const [value, setValue] = useState('');
 
-  const handleChange = () => {};
+  const handleChange = () => {
+    if (!value) {
+      dispatch(setSearchedData(usersData.data));
+    } else {
+      let searchResult = new RegExp(`${value}`, 'gi');
+      if (usersData && usersData.data.length > 0) {
+        const newSearchData = usersData.data.filter(
+          (item: UserProps) =>
+            item.firstName.match(searchResult) || item.lastName.match(searchResult)
+        );
+        dispatch(setSearchedData(newSearchData));
+      }
+      dispatch(setSearchTerm(value));
+    }
+  };
 
   return (
     <div className="w-full h-[55px] relative bg-[#222]">
