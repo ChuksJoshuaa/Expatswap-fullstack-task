@@ -29,4 +29,7 @@ export interface IIProps {
   searchedData: UserProps[];
   dateFrom: string;
   dateTo: string;
+  page: number;
+  pageSize: number;
+  numberOfPages: number;
 }

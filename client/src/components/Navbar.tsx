@@ -1,18 +1,17 @@
-import searchSvg from '../assets/search.svg';
-import toggleSvg from '../assets/toggle.svg';
-import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { NavProfile } from '.';
 import useFetch from '../api';
+import searchSvg from '../assets/search.svg';
+import toggleSvg from '../assets/toggle.svg';
 
+import { UserProps } from '../interface';
 import {
   openSidebar,
-  setLoader,
   setSearchTerm,
-  setSearchedData,
+  setSearchedData
 } from '../redux/features/users/userSlice';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import { UserProps } from '../interface';
 
 const Navbar = () => {
   const dispatch = useAppDispatch();
@@ -44,7 +43,6 @@ const Navbar = () => {
         } items-center`}>
         <Link
           to="/"
-          onClick={() => dispatch(setLoader(true))}
           className="w-72 h-[55px]"
           style={{ fontFamily: 'Lobster Two' }}>
           <h1

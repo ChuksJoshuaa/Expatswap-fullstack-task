@@ -1,14 +1,12 @@
 import { Link, useNavigate } from 'react-router-dom';
-import dashboardSvg from '../assets/dashboard.svg';
 import arrowRightSvg from '../assets/arrowRight.svg';
+import dashboardSvg from '../assets/dashboard.svg';
 import { HeaderProps } from '../interface';
-import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import { setLoader } from '../redux/features/users/userSlice';
+import { useAppSelector } from '../redux/hooks';
 
 const Header = ({ type }: HeaderProps) => {
   const navigate = useNavigate();
   const goBack = () => navigate(-1);
-  const dispatch = useAppDispatch();
   const { isSidebarOpen } = useAppSelector((state) => state.users);
   return (
     <div
@@ -37,7 +35,6 @@ const Header = ({ type }: HeaderProps) => {
         <button
           onClick={() => {
             goBack();
-            dispatch(setLoader(true));
           }}
           className="rounded-[6px] bg-[#222] py-[5px] px-[10px] gap-[5px] flex items-center cursor-pointer">
           <h3 className="text-white text-[14px] leading-[24px] font-normal">Go back</h3>

@@ -8,6 +8,9 @@ const initialState: IIProps = {
   searchedData: [],
   dateFrom: '',
   dateTo: '',
+  page: 1,
+  pageSize: 5,
+  numberOfPages: 0,
 };
 
 export const userSlice = createSlice({
@@ -36,10 +39,28 @@ export const userSlice = createSlice({
     setDateTo: (state, action) => {
       state.dateTo = action.payload;
     },
+    setPage: (state, action) => {
+      state.page = action.payload;
+    },
+    setNumberOfPages: (state, action) => {
+      state.numberOfPages = action.payload;
+    },
+    setPageSize: (state, action) => {
+      state.pageSize = action.payload;
+    },
   },
 });
 
-export const { setLoader, openSidebar, setSearchTerm, setSearchedData, setDateFrom, setDateTo } =
-  userSlice.actions;
+export const {
+  setLoader,
+  openSidebar,
+  setSearchTerm,
+  setSearchedData,
+  setDateFrom,
+  setDateTo,
+  setPage,
+  setNumberOfPages,
+  setPageSize,
+} = userSlice.actions;
 
 export default userSlice.reducer;

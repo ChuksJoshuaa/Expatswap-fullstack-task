@@ -1,21 +1,20 @@
+import moment from 'moment';
+import { Loader } from '.';
 import useFetch from '../api';
+import NotFoundImg from '../assets/not-fond.jpg';
 import { UserProps } from '../interface';
 import { useAppSelector } from '../redux/hooks';
 import { headers } from '../utils/header';
-import moment from 'moment';
-import { Loader } from '.';
-import NotFoundImg from '../assets/not-fond.jpg';
 
 const Homeview = () => {
   const {
     searchedData,
     isSidebarOpen,
-    loading: isLoading,
     searchTerm,
   } = useAppSelector((state) => state.users);
   const { loading } = useFetch();
 
-  if (loading || isLoading) return <Loader />;
+  if (loading) return <Loader />;
 
   return (
     <div className={`${!isSidebarOpen ? 'mx-6' : 'mx-1'}`}>

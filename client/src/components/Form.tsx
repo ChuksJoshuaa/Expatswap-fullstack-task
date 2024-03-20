@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
-import { UserProps } from '../interface';
-import { useAppDispatch } from '../redux/hooks';
-import { isEmptyString, validateEmail, validatePassword, checkAge } from '../utils/validate';
 import axios from 'axios';
-import { serverUrl } from '../utils/route';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { UserProps } from '../interface';
 import { ErrorNotifier, SuccessNotifier } from '../utils/Notification';
-import { setLoader } from '../redux/features/users/userSlice';
+import { serverUrl } from '../utils/route';
+import { checkAge, isEmptyString, validateEmail, validatePassword } from '../utils/validate';
 
 const initialUserState: UserProps = {
   firstName: '',
@@ -21,7 +20,7 @@ const Form = () => {
   const [formData, setFormData] = useState(initialState);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState(initialState);
-  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({
@@ -147,10 +146,9 @@ const Form = () => {
 
       if (response.data) {
         SuccessNotifier(successMessage);
-        dispatch(setLoader(true));
         emptyField();
         setTimeout(() => {
-          window.location.href = '/';
+          navigate('/');
         }, 500);
       }
     } catch (error) {

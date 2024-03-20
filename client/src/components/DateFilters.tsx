@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { useAppSelector, useAppDispatch } from '../redux/hooks';
-import { setDateTo, setDateFrom } from '../redux/features/users/userSlice';
 import useFetch from '../api';
+import { setDateFrom, setDateTo } from '../redux/features/users/userSlice';
+import { useAppDispatch, useAppSelector } from '../redux/hooks';
 
 const DateFilters = () => {
   const { loading } = useFetch();
   const dispatch = useAppDispatch();
   const [dateTo, setDateToo] = useState('');
   const [dateFrom, setDateFromm] = useState('');
-  const { isSidebarOpen, loading: isLoading } = useAppSelector((state) => state.users);
+  const { isSidebarOpen } = useAppSelector((state) => state.users);
 
   const handleDateToChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
@@ -26,11 +26,11 @@ const DateFilters = () => {
   };
   return (
     <React.Fragment>
-      {!isLoading || !loading ? (
+      {!loading ? (
         <div
           className={`mt-10 mb-5 flex items-center justify-between w-full flex-wrap ${!isSidebarOpen ? 'mx-6' : 'mx-1'}`}>
-          <div className="flex items-center w-2/3">
-            <div className="flex items-center">
+          <div className="flex items-center w-full flex-wrap">
+            <div className="flex items-center mr-5 mb-3">
               <div className="1/4 flex items-center border border-1 rounded-lg border-gray-400 px-2">
                 <svg
                   className="mx-4"
@@ -77,7 +77,7 @@ const DateFilters = () => {
               </div>
             </div>
 
-            <div className="flex items-center ml-5">
+            <div className="flex items-center mb-3">
               <div className="1/4 flex items-center border border-1 rounded-lg border-gray-400 px-2">
                 <svg
                   className="mx-4"
