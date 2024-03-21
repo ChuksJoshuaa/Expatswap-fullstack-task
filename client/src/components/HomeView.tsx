@@ -22,7 +22,7 @@ const Homeview = () => {
       <div className="w-full">
         {searchedData.length === 0 ? (
           <>
-            <div className="bg-white">
+            <div className="bg-white overflow-x-auto">
               <table className="w-min-full w-full mb-5">
                 <thead>
                   <tr>
